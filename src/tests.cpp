@@ -45,14 +45,26 @@ void test_shape_names_through_base_pointer(void)
 /// Verify small < big is true, big < small is false, small < small is false.
 void test_shape_operator_less(void)
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    Square s1(1);
+    Square s2(2);
+
+    const Shape &small = s1;
+    const Shape &big = s2;
+
+    TEST_ASSERT_TRUE_MESSAGE(small < big, "Big square must not be smaller than small square");
+    TEST_ASSERT_FALSE_MESSAGE(big < small, "Big square must not be smaller than small square");
+    TEST_ASSERT_FALSE_MESSAGE(small < small, "Small square cannot be smaller than itself");
 }
 
 /// Create Square(2) and Rectangle(1, 4): both have area 4.
 /// Verify that NEITHER a < b NOR b < a is true.
 void test_shape_equal_area_not_less(void)
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    Square a(2);
+    Rectangle b(1,4);
+
+    TEST_ASSERT_FALSE_MESSAGE(a < b, "Square and rectangle of same area cannot be smaller than each other");
+    TEST_ASSERT_FALSE_MESSAGE(b < a, "Square and rectangle of same area cannot be smaller than each other");
 }
 
 // ============================================================
