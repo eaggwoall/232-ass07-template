@@ -10,7 +10,7 @@
 
 // Uncomment the author block below and fill in your name:
 
-// std::string AUTHOR_NAME       = "Your Name";
+// std::string AUTHOR_NAME       = "King Batawe";
 // std::string AUTHOR_AUTHORSHIP = "I acknowledge that I have worked on this "
 // "assignment independently, except where explicitly noted and referenced. "
 // "Any collaboration or use of external resources has been properly cited. "
@@ -25,6 +25,7 @@
 bool Shape::operator<(const Shape &other) const
 {
     // TODO: compare area() of both shapes with <
+    
     return false;
 }
 
@@ -32,58 +33,62 @@ bool Shape::operator<(const Shape &other) const
 Circle::Circle(double newRadius)
 {
     // TODO: move the initialization of 'radius' into an initializer list
+    radius = newRadius;
 }
 
 /// pi * radius * radius, use std::numbers::pi
 double Circle::area() const
 {
     // TODO: implement
-    return 0.0;
+    return std::numbers::pi * radius * radius;
 }
 
 /// Return exactly "Circle".
 std::string Circle::name() const
 {
     // TODO: implement
-    return "";
+    return "Circle";
 }
 
 Square::Square(double newSide)
 {
     // TODO: initializer list
+    side = newSide;
 }
 
 /// side * side
 double Square::area() const
 {
     // TODO: implement
-    return 0.0;
+    return side * side;
 }
 
 /// Return exactly "Square".
 std::string Square::name() const
 {
     // TODO: implement
-    return "";
+    return "Square";
 }
 
 Rectangle::Rectangle(double newWidth, double newHeight)
 {
     // TODO: initializer list
+    width = newWidth;
+    height = newHeight;
 }
 
 /// width * height
 double Rectangle::area() const
 {
     // TODO: implement
-    return 0.0;
+    return width * height;
 }
 
 /// Return exactly "Rectangle".
 std::string Rectangle::name() const
 {
     // TODO: implement
-    return "";
+    return "Rectangle";
 }
 
 // ============================================================
