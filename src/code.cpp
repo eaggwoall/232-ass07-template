@@ -25,8 +25,7 @@
 bool Shape::operator<(const Shape &other) const
 {
     // TODO: compare area() of both shapes with <
-    
-    return false;
+    return area() < other.area();
 }
 
 /// Constructor with a member initializer list.
