@@ -60,8 +60,11 @@ void test_shape_operator_less(void)
 /// Verify that NEITHER a < b NOR b < a is true.
 void test_shape_equal_area_not_less(void)
 {
-    Square a(2);
-    Rectangle b(1,4);
+    Square s(2);
+    Rectangle r(1,4);
+
+    const Shape &a = s;
+    const Shape &b = r;
 
     TEST_ASSERT_FALSE_MESSAGE(a < b, "Square and rectangle of same area cannot be smaller than each other");
     TEST_ASSERT_FALSE_MESSAGE(b < a, "Square and rectangle of same area cannot be smaller than each other");
@@ -76,14 +79,24 @@ void test_shape_equal_area_not_less(void)
 /// (Do NOT delete the shapes yourself: the list owns them.)
 void test_list_add_and_length(void)
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    ShapeList list;
+
+    int result1 = list.addShape(new Circle(1));
+    int result2 = list.addShape(new Square(2));
+
+    TEST_ASSERT_TRUE_MESSAGE(result1 == 0, "Failed to add first shape");
+    TEST_ASSERT_TRUE_MESSAGE(result2 == 0, "Failed to add second shape");
+    TEST_ASSERT_TRUE_MESSAGE(list.length() == 2, "List length is incorrect");
 }
 
 /// Create a ShapeList. Call addShape(nullptr).
 /// Verify it returns -1 and length() stays 0.
 void test_list_add_null_guard(void)
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    ShapeList list;
+    int result = list.addShape(nullptr);
+    TEST_ASSERT_TRUE_MESSAGE(result == -1, "Failed to reject null shape");
+    TEST_ASSERT_TRUE_MESSAGE(list.length() == 0, "List length is incorrect");
 }
 
 /// Add Rectangle(2, 5) (area 10), Circle(1) (area 3.14), Square(2) (area 4).

@@ -98,13 +98,25 @@ std::string Rectangle::name() const
 ShapeList::~ShapeList()
 {
     // TODO: implement
+    for (Shape *shapePtr : data){
+        delete shapePtr;
+    }
+
+    data.clear();
+
 }
 
 /// Append at the end. Return -1 if newShapePtr is nullptr, 0 on success.
 int ShapeList::addShape(Shape *newShapePtr)
 {
     // TODO: implement
-    return -1;
+    if (newShapePtr == nullptr){
+        return -1;
+    }
+
+    data.push_back(newShapePtr);
+
+    return 0;
 }
 
 /// Delete the first shape and remove it from the list.
@@ -119,13 +131,14 @@ bool ShapeList::removeFirst()
 int ShapeList::length() const
 {
     // TODO: implement
-    return 0;
+    return static_cast<int>(data.size());
 }
 
 /// Sum of area() of all shapes (0.0 if empty).
 double ShapeList::totalArea() const
 {
     // TODO: implement
+    
     return 0.0;
 }
 
